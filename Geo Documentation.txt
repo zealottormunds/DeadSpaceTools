@@ -1,0 +1,31 @@
+Documentation for .geo files.
+To figure this out I analyzed the original .ms script that someone made for .geo files, so credits to whoever made that.
+
+INDEX / DATA TYPE / DESCRIPTION
+0x00 int, magic bytes
+0x04 int, always 0x32
+0x08 int, always 0x3
+0x20 int, mesh name offset
+0x34 int, table count
+0x38 int, ukw4
+0x48 int, ukw table count
+0x4C int, ukw table offset
+0x50 int, datatable1 offset
+0x54 int, ukwtable2
+0x60 int, uvs?
+0x64 int, null
+0x68 int, datatable2
+0x6C int, always 40 more than datatable2
+0x9C int, total file size
+
+Then, every mesh header has:
+0xC int, texture hash
+0x26 int ?
+0x27 int, uv type
+0x30 int, face count
+0x38 short, vertex count
+0x3C short, is lod model and tristrip? 5 = yes, 4 = no
+0x42 int, vertex count - 1
+0x64 int, vertex length (-1 for 0x20, else 0x14. If 0x3C is 5, then vertex length will be 0xC)
+0x84 int, vertex offset
+0x88 int, face offset
