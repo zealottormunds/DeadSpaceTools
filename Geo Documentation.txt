@@ -34,3 +34,7 @@ Vertex formats:
 0x20: x y z nx ny nz ?? ?? ?? ??
 0x14: x y z nx ny nz ?? ??
 0x10: x y z ??
+
+Triangle formats:
+Default - A B C, D E F, G H I (each triangle is a short value)
+Tri Strips - A B C, B C D, C D E, D E F (the direction changes in each iteration)
