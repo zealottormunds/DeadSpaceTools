@@ -29,3 +29,8 @@ Then, every mesh header has:
 0x64 int, vertex length (-1 for 0x20, else 0x14. If 0x3C is 5, then vertex length will be 0xC)
 0x84 int, vertex offset
 0x88 int, face offset
+
+Vertex formats:
+0x20: x y z nx ny nz ?? ?? ?? ??
+0x14: x y z nx ny nz ?? ??
+0x10: x y z ??
