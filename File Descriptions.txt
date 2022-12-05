@@ -1,0 +1,10 @@
+geo: meshes
+tg4d: dds textures without header
+tg4h: dds headers for every texture
+rcb: skeleton files
+bnk: animation banks?
+hkx: collision models. Easily swappable.
+sbk: sound banks
+geo (mesh volatile): meta data for meshes?
+nav: navigation meshes for enemies?
+simgroup: scripting
