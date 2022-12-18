@@ -1,0 +1,10 @@
+C:\Users\santi\source\repos\Zealot's Dead Space Tools\Zealot's Dead Space Tools\bin\Release\Zealot's Dead Space Tools.exe.config
+C:\Users\santi\source\repos\Zealot's Dead Space Tools\Zealot's Dead Space Tools\bin\Release\Zealot's Dead Space Tools.exe
+C:\Users\santi\source\repos\Zealot's Dead Space Tools\Zealot's Dead Space Tools\bin\Release\Zealot's Dead Space Tools.pdb
+C:\Users\santi\source\repos\Zealot's Dead Space Tools\Zealot's Dead Space Tools\obj\Release\Zealot_s_Dead_Space_Tools.Form1.resources
+C:\Users\santi\source\repos\Zealot's Dead Space Tools\Zealot's Dead Space Tools\obj\Release\Zealot_s_Dead_Space_Tools.Properties.Resources.resources
+C:\Users\santi\source\repos\Zealot's Dead Space Tools\Zealot's Dead Space Tools\obj\Release\Zealot's Dead Space Tools.csproj.GenerateResource.cache
+C:\Users\santi\source\repos\Zealot's Dead Space Tools\Zealot's Dead Space Tools\obj\Release\Zealot's Dead Space Tools.csproj.CoreCompileInputs.cache
+C:\Users\santi\source\repos\Zealot's Dead Space Tools\Zealot's Dead Space Tools\obj\Release\Zealot's Dead Space Tools.exe
+C:\Users\santi\source\repos\Zealot's Dead Space Tools\Zealot's Dead Space Tools\obj\Release\Zealot's Dead Space Tools.pdb
+C:\Users\santi\source\repos\Zealot's Dead Space Tools\Zealot's Dead Space Tools\obj\Release\Zealot's Dead Space Tools.csprojAssemblyReference.cache
