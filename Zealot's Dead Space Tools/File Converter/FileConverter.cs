@@ -30,8 +30,26 @@ namespace Zealot_s_Dead_Space_Tools.File_Converter
 
             if (o.FileName == "") return;
 
-            ConvertGeo c = new ConvertGeo(o.FileName);
-            c.ShowDialog();
+            byte[] fileBytes = File.ReadAllBytes(o.FileName);
+            string magic = fp.ReadString(fileBytes, 0, 4);
+
+            switch (magic)
+            {
+                case "MGAE":
+                    {
+                        ConvertGeo c = new ConvertGeo(o.FileName, fileBytes, this);
+                        c.ShowDialog();
+                    }
+                    break;
+                case "EAGM":
+                    {
+                        byte[] converted = ProcessPS3Geo(fileBytes, o.FileName);
+                        MessageBox.Show("Geo has been converted to PC format.");
+                        ConvertGeo c = new ConvertGeo(o.FileName, converted, this);
+                        c.Show();
+                    }
+                    break;
+            }
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -56,7 +74,7 @@ namespace Zealot_s_Dead_Space_Tools.File_Converter
                         break;
                     case "EAGM":
                         {
-                            byte[] converted = ProcessPS3Geo(fileBytes, o.FileNames[x]);
+                            byte[] converted = ProcessPS3Geo(fileBytes, o.FileNames[x], checkBox1.Checked);
                             string fileName = o.FileNames[x];
                             File.WriteAllBytes(fileName.Replace(".geo", ".win.geo"), fileBytes);
                         }
@@ -121,7 +139,7 @@ namespace Zealot_s_Dead_Space_Tools.File_Converter
             return BitConverter.ToSingle(o, 0);
         }
 
-        private byte[] ProcessPS3Geo(byte[] fileBytes, string fileName)
+        public byte[] ProcessPS3Geo(byte[] fileBytes, string fileName, bool cleanNormals = false)
         {
             // Convert endianess
             unsafe
@@ -142,6 +160,13 @@ namespace Zealot_s_Dead_Space_Tools.File_Converter
                             *val = InvertBytes(*val);
                             inverted[shortIndex - db1i] = true;
                         }
+                    }
+
+                    void CleanShort(int index)
+                    {
+                        int shortIndex = index;
+                        short* val = (short*)(shortIndex);
+                        *val = 0;
                     }
 
                     void ConvertFloat(int index)
@@ -341,10 +366,22 @@ namespace Zealot_s_Dead_Space_Tools.File_Converter
                             if (vertexLength >= 0x10)
                             {
                                 int v4i = v3i + 0x4;
-                                ConvertShort(v4i);
-                                ConvertShort(v4i + 2);
-                                ConvertShort(v4i + 4);
-                                ConvertShort(v4i + 6);
+
+                                if(cleanNormals == false)
+                                {
+                                    ConvertShort(v4i);
+                                    ConvertShort(v4i + 2);
+                                    ConvertShort(v4i + 4);
+                                    ConvertShort(v4i + 6);
+                                }
+                                else
+                                {
+                                    CleanShort(v4i);
+                                    CleanShort(v4i + 2);
+                                    CleanShort(v4i + 4);
+                                    CleanShort(v4i + 6);
+                                }
+
                                 /*short* val = (short*)(v4i);
                                 *val = 0;
                                 val = (short*)(v4i + 2);

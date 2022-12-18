@@ -10,3 +10,15 @@ C:\Users\santi\source\repos\Zealot's Dead Space Tools\Zealot's Dead Space Tools\
 C:\Users\santi\source\repos\Zealot's Dead Space Tools\Zealot's Dead Space Tools\obj\Debug\Zealot's Dead Space Tools.pdb
 C:\Users\santi\source\repos\Zealot's Dead Space Tools\Zealot's Dead Space Tools\obj\Debug\Zealot_s_Dead_Space_Tools.File_Converter.FileConverter.resources
 C:\Users\santi\source\repos\Zealot's Dead Space Tools\Zealot's Dead Space Tools\obj\Debug\Zealot_s_Dead_Space_Tools.File_Converter.ConvertGeo.resources
+C:\Users\santi\OneDrive\Documentos\GitHub\DeadSpaceTools\Zealot's Dead Space Tools\bin\Debug\Zealot's Dead Space Tools.exe.config
+C:\Users\santi\OneDrive\Documentos\GitHub\DeadSpaceTools\Zealot's Dead Space Tools\bin\Debug\Zealot's Dead Space Tools.exe
+C:\Users\santi\OneDrive\Documentos\GitHub\DeadSpaceTools\Zealot's Dead Space Tools\bin\Debug\Zealot's Dead Space Tools.pdb
+C:\Users\santi\OneDrive\Documentos\GitHub\DeadSpaceTools\Zealot's Dead Space Tools\obj\Debug\Zealot's Dead Space Tools.csprojAssemblyReference.cache
+C:\Users\santi\OneDrive\Documentos\GitHub\DeadSpaceTools\Zealot's Dead Space Tools\obj\Debug\Zealot_s_Dead_Space_Tools.File_Converter.ConvertGeo.resources
+C:\Users\santi\OneDrive\Documentos\GitHub\DeadSpaceTools\Zealot's Dead Space Tools\obj\Debug\Zealot_s_Dead_Space_Tools.File_Converter.FileConverter.resources
+C:\Users\santi\OneDrive\Documentos\GitHub\DeadSpaceTools\Zealot's Dead Space Tools\obj\Debug\Zealot_s_Dead_Space_Tools.Form1.resources
+C:\Users\santi\OneDrive\Documentos\GitHub\DeadSpaceTools\Zealot's Dead Space Tools\obj\Debug\Zealot_s_Dead_Space_Tools.Properties.Resources.resources
+C:\Users\santi\OneDrive\Documentos\GitHub\DeadSpaceTools\Zealot's Dead Space Tools\obj\Debug\Zealot's Dead Space Tools.csproj.GenerateResource.cache
+C:\Users\santi\OneDrive\Documentos\GitHub\DeadSpaceTools\Zealot's Dead Space Tools\obj\Debug\Zealot's Dead Space Tools.csproj.CoreCompileInputs.cache
+C:\Users\santi\OneDrive\Documentos\GitHub\DeadSpaceTools\Zealot's Dead Space Tools\obj\Debug\Zealot's Dead Space Tools.exe
+C:\Users\santi\OneDrive\Documentos\GitHub\DeadSpaceTools\Zealot's Dead Space Tools\obj\Debug\Zealot's Dead Space Tools.pdb

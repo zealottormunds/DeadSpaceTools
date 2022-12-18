@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Zealot_s_Dead_Space_Tools.File_Converter
 {
-    public class Geo
+    public unsafe class Geo
     {
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public unsafe struct GeoData
@@ -97,6 +97,19 @@ namespace Zealot_s_Dead_Space_Tools.File_Converter
             public float unk_0xB4; // 0xB4
             public float unk_0xB8; // 0xB8
             public float unk_0xBC; // 0xBC
+        }
+
+        public static int GetVertexLength(GeoHeaderData* sec)
+        {
+            int vertexLength = 0;
+            if (sec->vertexLenSetting == -1) vertexLength = 0x20;
+            else
+            {
+                if (sec->lodType == 4) vertexLength = 0x14;
+                else vertexLength = 0xC;
+            }
+
+            return vertexLength;
         }
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
