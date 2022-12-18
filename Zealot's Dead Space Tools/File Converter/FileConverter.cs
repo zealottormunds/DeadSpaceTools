@@ -35,10 +35,15 @@ namespace Zealot_s_Dead_Space_Tools.File_Converter
 
             switch (magic)
             {
+                default:
+                    {
+                        MessageBox.Show("Unknown file magic: " + magic);
+                    }
+                    break;
                 case "MGAE":
                     {
                         ConvertGeo c = new ConvertGeo(o.FileName, fileBytes, this);
-                        c.ShowDialog();
+                        c.Show();
                     }
                     break;
                 case "EAGM":
@@ -311,6 +316,8 @@ namespace Zealot_s_Dead_Space_Tools.File_Converter
                             else vertexLength = 0xC;
                         }
 
+                        sec->vertexLenSetting = InvertBytes(sec->vertexLenSetting);
+
                         for (int i = 0; i < sec->vertexCount; i++)
                         {
                             int index = vertexSection + (i * vertexLength);
@@ -318,40 +325,72 @@ namespace Zealot_s_Dead_Space_Tools.File_Converter
                             int v2i = v1i + 4;
                             int v3i = v2i + 4;
 
-                            if (inverted[v1i - db1i] == false)
+                            if (vertexLength >= 0xC) // X Y Z
                             {
-                                float* vx = (float*)(v1i);
-                                *vx = InvertBytes(*vx);
-                                inverted[v1i - db1i] = true;
+                                if (inverted[v1i - db1i] == false)
+                                {
+                                    float* vx = (float*)(v1i);
+                                    *vx = InvertBytes(*vx);
+                                    inverted[v1i - db1i] = true;
+                                }
+
+                                if (inverted[v2i - db1i] == false)
+                                {
+                                    float* vy = (float*)(v2i);
+                                    *vy = InvertBytes(*vy);
+                                    inverted[v2i - db1i] = true;
+                                }
+
+                                if (inverted[v3i - db1i] == false)
+                                {
+                                    float* vz = (float*)(v3i);
+                                    *vz = InvertBytes(*vz);
+                                    inverted[v3i - db1i] = true;
+                                }
                             }
 
-                            if (inverted[v2i - db1i] == false)
+                            if (vertexLength >= 0x10) // ??
                             {
-                                float* vy = (float*)(v2i);
-                                *vy = InvertBytes(*vy);
-                                inverted[v2i - db1i] = true;
+                                int v4i = v3i + 0x4;
+
+                                if(cleanNormals == false)
+                                {
+                                    ConvertShort(v4i);
+                                    ConvertShort(v4i + 2);
+                                    //ConvertShort(v4i + 4);
+                                    //ConvertShort(v4i + 6);
+                                }
+                                else
+                                {
+                                    CleanShort(v4i);
+                                    CleanShort(v4i + 2);
+                                    //CleanShort(v4i + 4);
+                                    //CleanShort(v4i + 6);
+                                }
                             }
 
-                            if (inverted[v3i - db1i] == false)
+                            if (vertexLength >= 0x14) // ?? 4 byte
                             {
-                                float* vz = (float*)(v3i);
-                                *vz = InvertBytes(*vz);
-                                inverted[v3i - db1i] = true;
+                                //int v5i = v3i + 0x8;
+
+                                /*if (inverted[v5i - db1i] == false)
+                                {
+                                    float* vw = (float*)(v5i);
+                                    vw = InvertBytes(*vw);
+                                    inverted[v5i - db1i] = true;
+
+                                    short* vwsa = (short*)(v5i);
+                                    *vwsa = InvertBytes(*vwsa);
+
+                                    short* vwsb = (short*)(v5i + 2);
+                                    *vwsb = InvertBytes(*vwsb);
+                                }*/
                             }
 
                             if (vertexLength >= 0x20)
                             {
                                 for (int j = 0; j < 4; j++)
                                 {
-                                    /*int shortIndex = (db1i + index + 0xC + (j * 2));
-
-                                    if (inverted[shortIndex - db1i] == false)
-                                    {
-                                        short* val = (short*)(shortIndex);
-                                        *val = InvertBytes(*val);
-                                        inverted[shortIndex - db1i] = true;
-                                    }*/
-
                                     int shortIndex = (db1i + index + 0x18 + (j * 2));
 
                                     if (inverted[shortIndex - db1i] == false)
@@ -362,58 +401,6 @@ namespace Zealot_s_Dead_Space_Tools.File_Converter
                                     }
                                 }
                             }
-
-                            if (vertexLength >= 0x10)
-                            {
-                                int v4i = v3i + 0x4;
-
-                                if(cleanNormals == false)
-                                {
-                                    ConvertShort(v4i);
-                                    ConvertShort(v4i + 2);
-                                    ConvertShort(v4i + 4);
-                                    ConvertShort(v4i + 6);
-                                }
-                                else
-                                {
-                                    CleanShort(v4i);
-                                    CleanShort(v4i + 2);
-                                    CleanShort(v4i + 4);
-                                    CleanShort(v4i + 6);
-                                }
-
-                                /*short* val = (short*)(v4i);
-                                *val = 0;
-                                val = (short*)(v4i + 2);
-                                *val = 0;*/
-                                //ConvertFloat(v4i);
-                            }
-
-                            /*if (vertexLength >= 0x14)
-                            {
-                                int v4i = v3i + 0x8;
-
-                                if (inverted[v4i - db1i] == false)
-                                {
-                                    float* vna = (float*)(v4i);
-                                    *vna = InvertBytes(*vna);
-                                    //*vna = 0;
-                                    inverted[v4i - db1i] = true;
-                                }
-                            }
-
-                            if (vertexLength >= 0x10)
-                            {
-                                int v4i = v3i + 0x4;
-
-                                if (inverted[v4i - db1i] == false)
-                                {
-                                    float* vna = (float*)(v4i);
-                                    *vna = InvertBytes(*vna);
-                                    //*vna = 0;
-                                    inverted[v4i - db1i] = true;
-                                }
-                            }*/
                         }
 
                         // Fix triangle section

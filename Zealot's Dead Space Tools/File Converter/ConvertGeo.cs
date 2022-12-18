@@ -66,6 +66,8 @@ namespace Zealot_s_Dead_Space_Tools.File_Converter
 
                     string textureHash = sec->textureHash.ToString("X2").PadLeft(8, '0');
                     textBox2.Text = textureHash;
+
+                    numericUpDown1.Value = (decimal)(sec->faceCount);
                 }
             }
         }
@@ -87,6 +89,8 @@ namespace Zealot_s_Dead_Space_Tools.File_Converter
                         sec->textureHash = Convert.ToInt32(textBox2.Text, 16);
                     }
                     sec->textureHash = sec->textureHash;
+
+                    sec->faceCount = (int)(numericUpDown1.Value);
                 }
             }
         }
@@ -105,8 +109,54 @@ namespace Zealot_s_Dead_Space_Tools.File_Converter
             }
         }
 
+        private unsafe byte[] ClearNormals()
+        {
+            byte[] a = new byte[geoBytes.Length];
+            Array.Copy(geoBytes, a, geoBytes.Length);
+
+            fixed (byte* db1 = a)
+            {
+                for (int x = 0; x < geo.tableCount; x++)
+                {
+                    int offset = geo.datatable_offset + (x * 0xC0);
+                    Geo.GeoHeaderData* sec = (Geo.GeoHeaderData*)(((int)db1) + offset);
+
+                    int vertexSection = sec->vertexOffset;
+                    int vertexLength = 0;
+                    if (sec->vertexLenSetting == -1) vertexLength = 0x20;
+                    else
+                    {
+                        if (sec->lodType == 4) vertexLength = 0x14;
+                        else vertexLength = 0xC;
+                    }
+
+                    int db1i = (int)db1;
+
+                    for (int i = 0; i < sec->vertexCount; i++)
+                    {
+                        int index = vertexSection + (i * vertexLength);
+                        int v4i = db1i + index + 4 + 4 + 0x4;
+
+                        if (vertexLength >= 0x10)
+                        {
+                            *(short*)(v4i) = 0;
+                            *(short*)(v4i + 2) = 0;
+                        }
+                    }
+                }
+            }
+
+            return a;
+        }
+
         private void Save(object sender, EventArgs e)
         {
+            if(checkBox1.Checked)
+            {
+                File.WriteAllBytes(geoPath, ClearNormals());
+                return;
+            }
+
             File.WriteAllBytes(geoPath, geoBytes);
         }
 
@@ -118,6 +168,12 @@ namespace Zealot_s_Dead_Space_Tools.File_Converter
             if (s.FileName == "") return;
 
             geoPath = s.FileName;
+
+            if (checkBox1.Checked)
+            {
+                File.WriteAllBytes(geoPath, ClearNormals());
+                return;
+            }
             File.WriteAllBytes(geoPath, geoBytes);
         }
 

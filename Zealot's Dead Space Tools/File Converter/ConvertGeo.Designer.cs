@@ -41,7 +41,11 @@
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transferTextureHashesFromAnotherGeoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // listBox1
@@ -49,7 +53,7 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(12, 48);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(394, 186);
+            this.listBox1.Size = new System.Drawing.Size(394, 212);
             this.listBox1.TabIndex = 0;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -65,7 +69,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(412, 47);
+            this.label2.Location = new System.Drawing.Point(412, 48);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(99, 13);
             this.label2.TabIndex = 3;
@@ -74,14 +78,14 @@
             // textBox1
             // 
             this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(412, 64);
+            this.textBox1.Location = new System.Drawing.Point(412, 65);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(220, 20);
             this.textBox1.TabIndex = 4;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(412, 110);
+            this.textBox2.Location = new System.Drawing.Point(412, 111);
             this.textBox2.MaxLength = 8;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(220, 20);
@@ -90,7 +94,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(412, 93);
+            this.label3.Location = new System.Drawing.Point(412, 94);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 13);
             this.label3.TabIndex = 5;
@@ -98,9 +102,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(412, 137);
+            this.button2.Location = new System.Drawing.Point(412, 208);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(220, 97);
+            this.button2.Size = new System.Drawing.Size(220, 52);
             this.button2.TabIndex = 7;
             this.button2.Text = "Save Selected Group";
             this.button2.UseVisualStyleBackColor = true;
@@ -156,11 +160,45 @@
             this.transferTextureHashesFromAnotherGeoToolStripMenuItem.Text = "Transfer texture hashes from another geo";
             this.transferTextureHashesFromAnotherGeoToolStripMenuItem.Click += new System.EventHandler(this.transferTextureHashesFromAnotherGeoToolStripMenuItem_Click);
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(474, 184);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(89, 17);
+            this.checkBox1.TabIndex = 9;
+            this.checkBox1.Text = "Clear normals";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(412, 139);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(135, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Face Count (0 for invisible):";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(412, 155);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            1410065407,
+            2,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(220, 20);
+            this.numericUpDown1.TabIndex = 11;
+            // 
             // ConvertGeo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(644, 245);
+            this.ClientSize = new System.Drawing.Size(644, 266);
+            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label3);
@@ -177,6 +215,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ConvertGeo_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,5 +236,8 @@
         private System.Windows.Forms.ToolStripMenuItem transferTextureHashesFromAnotherGeoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }
