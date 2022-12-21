@@ -44,6 +44,7 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.replaceAllTextureHashesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
@@ -147,7 +148,8 @@
             // toolsToolStripMenuItem
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.transferTextureHashesFromAnotherGeoToolStripMenuItem});
+            this.transferTextureHashesFromAnotherGeoToolStripMenuItem,
+            this.replaceAllTextureHashesToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
@@ -190,6 +192,13 @@
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(220, 20);
             this.numericUpDown1.TabIndex = 11;
+            // 
+            // replaceAllTextureHashesToolStripMenuItem
+            // 
+            this.replaceAllTextureHashesToolStripMenuItem.Name = "replaceAllTextureHashesToolStripMenuItem";
+            this.replaceAllTextureHashesToolStripMenuItem.Size = new System.Drawing.Size(290, 22);
+            this.replaceAllTextureHashesToolStripMenuItem.Text = "Replace all texture hashes";
+            this.replaceAllTextureHashesToolStripMenuItem.Click += new System.EventHandler(this.replaceAllTextureHashesToolStripMenuItem_Click);
             // 
             // ConvertGeo
             // 
@@ -239,5 +248,6 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.ToolStripMenuItem replaceAllTextureHashesToolStripMenuItem;
     }
 }

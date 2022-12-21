@@ -252,5 +252,26 @@ namespace Zealot_s_Dead_Space_Tools.File_Converter
 
             return th.ToArray();
         }
+
+        private unsafe void replaceAllTextureHashesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int newHash = 0;
+            if (textBox2.Text != "") newHash = Convert.ToInt32(textBox2.Text, 16);
+            else
+            {
+                MessageBox.Show("Please write a texture hash in the textbox.");
+                return;
+            }
+
+            fixed (byte* db1 = geoBytes)
+            {
+                for (int x = 0; x < geo.tableCount; x++)
+                {
+                    int offset = geo.datatable_offset + (x * 0xC0);
+                    Geo.GeoHeaderData* sec = (Geo.GeoHeaderData*)(((int)db1) + offset);
+                    sec->textureHash = newHash;
+                }
+            }
+        }
     }
 }
